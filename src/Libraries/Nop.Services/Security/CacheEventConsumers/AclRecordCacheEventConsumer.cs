@@ -14,7 +14,7 @@ namespace Nop.Services.Security.CacheEventConsumers
         /// <param name="entity">Entity</param>
         protected override void ClearCache(AclRecord entity)
         {
-            var cacheKey = NopSecurityDefaults.AclRecordByEntityIdNameCacheKey.FillCacheKey(entity.EntityId, entity.EntityName);
+            var cacheKey = _cacheKeyService.PrepareKeyForDefaultCache(NopSecurityDefaults.AclRecordByEntityIdNameCacheKey, entity.EntityId, entity.EntityName);
             Remove(cacheKey);
         }
     }

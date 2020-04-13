@@ -15,7 +15,7 @@ namespace Nop.Services.Forums.CacheEventConsumers
         protected override void ClearCache(ForumGroup entity)
         {
             Remove(NopForumDefaults.ForumGroupAllCacheKey);
-            var cacheKey = NopForumDefaults.ForumAllByForumGroupIdCacheKey.FillCacheKey(entity);
+            var cacheKey = _cacheKeyService.PrepareKeyForDefaultCache(NopForumDefaults.ForumAllByForumGroupIdCacheKey, entity);
             Remove(cacheKey);
         }
     }

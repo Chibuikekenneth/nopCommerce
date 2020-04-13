@@ -16,8 +16,8 @@ namespace Nop.Services.Localization.CacheEventConsumers
         {
             Remove(NopLocalizationDefaults.LocalizedPropertyAllCacheKey);
 
-            var cacheKey = NopLocalizationDefaults.LocalizedPropertyCacheKey
-                .FillCacheKey(entity.LanguageId, entity.EntityId, entity.LocaleKeyGroup, entity.LocaleKey);
+            var cacheKey = _cacheKeyService.PrepareKeyForDefaultCache(NopLocalizationDefaults.LocalizedPropertyCacheKey
+                , entity.LanguageId, entity.EntityId, entity.LocaleKeyGroup, entity.LocaleKey);
 
             Remove(cacheKey);
         }

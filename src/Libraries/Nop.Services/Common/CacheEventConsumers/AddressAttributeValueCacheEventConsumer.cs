@@ -16,7 +16,7 @@ namespace Nop.Services.Common.CacheEventConsumers
         {
             Remove(NopCommonDefaults.AddressAttributesAllCacheKey);
 
-            var cacheKey = NopCommonDefaults.AddressAttributeValuesAllCacheKey.FillCacheKey(entity.AddressAttributeId);
+            var cacheKey = _cacheKeyService.PrepareKeyForDefaultCache(NopCommonDefaults.AddressAttributeValuesAllCacheKey, entity.AddressAttributeId);
             Remove(cacheKey);
         }
     }

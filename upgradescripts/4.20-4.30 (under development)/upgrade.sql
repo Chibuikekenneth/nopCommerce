@@ -2796,3 +2796,19 @@ BEGIN
     VALUES (N'cookiesettings.customercookieexpires', N'8760', 0)
 END
 GO
+
+--new setting
+IF NOT EXISTS (SELECT 1 FROM [Setting] WHERE [name] = N'cachingsettings.shorttermcachetime')
+BEGIN
+    INSERT [Setting] ([Name], [Value], [StoreId])
+    VALUES (N'cachingsettings.shorttermcachetime', N'10', 0)
+END
+GO
+
+--new setting
+IF NOT EXISTS (SELECT 1 FROM [Setting] WHERE [name] = N'cachingsettings.defaultcachetime')
+BEGIN
+    INSERT [Setting] ([Name], [Value], [StoreId])
+    VALUES (N'cachingsettings.defaultcachetime', N'60', 0)
+END
+GO
